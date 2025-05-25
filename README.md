@@ -1,4 +1,5 @@
-# MLops
-test
+# MLOps Zoomcamp Certification
 
-test0001
+## Module 1: Introduction
+
+## Module 2: Experiment Tracking & Model Management
