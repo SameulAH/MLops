@@ -1,4 +1,4 @@
-# MLOps Zoomcamp Certification
+# MLOps Zoomcamp Certificate
 
 ## Module 1: Introduction
 
