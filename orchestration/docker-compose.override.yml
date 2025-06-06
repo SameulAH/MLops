@@ -1,0 +1,116 @@
+services:
+
+  postgres:
+      ports:
+        - "5433:5432"
+      # extra_hosts:
+      # - "host.docker.internal:host-gateway"
+      # volumes:
+      # - pg_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - astro_airflow
+    
+    
+  minio:
+    image: minio/minio
+    command: server --console-address ":9001" /data
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - astro_airflow
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+      
+  # mlflow:
+  #   image: mlflow/mlflow:latest
+  #   depends_on:
+  #     - postgres
+  #     - minio
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "5000:5000"
+  #   command: mlflow server \
+  #            --backend-store-uri=${MLFLOW_BACKEND_STORE_URI} \
+  #            --default-artifact-root=${MLFLOW_DEFAULT_ARTIFACT_ROOT} \
+  #            --host 0.0.0.0 \
+  #            --port 5000
+  #   networks:
+  #     - astro_airflow
+
+  # mlflow:
+  #   image: ghcr.io/mlflow/mlflow
+  #   command: >
+  #     bash -c "pip install boto3 &&
+  #              mlflow server 
+  #              --host 0.0.0.0 
+  #              --backend-store-uri sqlite:////data/mlflow.db 
+  #              --default-artifact-root s3://mlflow"
+
+
+               
+  #   volumes:
+  #     - C:/Users/sam/Documents/GitHub/MLops/Orchestration}/include/mlflow:/data
+  #   ports:
+  #     - 5000:5000
+  #   env_file: .env
+  #   networks:
+  #     - airflow
+  #   # extra_hosts:
+  #   #   - "host.docker.internal:host-gateway"
+  #   depends_on:
+  #     - minio
+  #   restart: always
+  mlflow:
+    image: ghcr.io/mlflow/mlflow
+    # command: >
+    #   bash -c "pip install boto3 &&
+    #            mlflow server
+    #            --host 0.0.0.0
+    #            --backend-store-uri sqlite:////data/mlflow_backend.db
+    #            --default-artifact-root s3://mlflowdata"
+    command: bash -c '(pip install -q boto3) && (mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////data/mlflow_backend.db --default-artifact-root s3://mlflowdata)'
+    
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./include/mlflow:/data
+    env_file: .env
+    networks:
+      - astro_airflow
+    depends_on:
+      - minio
+    restart: always
+
+
+volumes:
+  minio-data:
+  pgadmin-data:
+  # pg_data:
+
+networks:
+  astro_airflow:
+    driver: bridge
+    attachable: true
+    name: astro_airflow
+
+# env_file:
+#   - .env
