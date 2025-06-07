@@ -9,3 +9,6 @@ airflow-webserver.pid
 webserver_config.py
 airflow.cfg
 airflow.db
+ingest_drymode.py
+set-env.ps1
+packages.txt
