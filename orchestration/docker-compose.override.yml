@@ -7,11 +7,11 @@ services:
         POSTGRES_USER: ${POSTGRES_USER}
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_DB: ${POSTGRES_DB}
-      
       networks:
         - astro_airflow
       volumes:
         - postgres_data:/var/lib/postgresql/data
+
 
   pgadmin:
     image: dpage/pgadmin4
@@ -26,6 +26,10 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     networks:
       - astro_airflow
+    env_file:
+      - .env
+
+
     
     
   minio:
@@ -34,8 +38,8 @@ services:
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
-    extra_hosts:      
-       - "host.docker.internal:host-gateway"
+    # extra_hosts:      
+    #    - "host.docker.internal:host-gateway"
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -43,9 +47,10 @@ services:
       - minio-data:/data
     networks:
       - astro_airflow
-    # extra_hosts:
-    #   - "host.docker.internal:host-gateway"
-      
+    env_file:
+      - .env
+
+
 
   mlflow:
     image: ghcr.io/mlflow/mlflow
@@ -55,7 +60,7 @@ services:
     #            --host 0.0.0.0
     #            --backend-store-uri sqlite:////data/mlflow_backend.db
     #            --default-artifact-root s3://mlflowdata"
-    command: bash -c '(pip install -q boto3) && (mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////data/mlflow_backend.db --default-artifact-root s3://mlflowdata)'
+    command: bash -c '(pip install -q boto3) && (mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////data/mlflow_backend2.db --default-artifact-root s3://mlflowdata)'
     
     ports:
       - "5000:5000"
@@ -66,13 +71,6 @@ services:
     depends_on:
       - minio
     restart: always
-
-  # airflow:
-  #     environment:
-  #       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-  #       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-  #     env_file:
-  #       - .env
 
 
 volumes:
@@ -87,4 +85,4 @@ networks:
     attachable: true
     name: astro_airflow
     external: true
-
+  
