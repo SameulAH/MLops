@@ -59,7 +59,7 @@ def ingest_task():
     upload_to_minio(df, FILENAME, folder=FOLDER, aws_conn_id=AWS_CONN_ID)
 
 with DAG(
-    dag_id="inges_minio_fulldata",
+    dag_id="inges_minio_test01",
     start_date=datetime(2024, 1, 1),
     schedule_interval="@once",
     catchup=False,

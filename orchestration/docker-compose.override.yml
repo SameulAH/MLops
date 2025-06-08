@@ -66,11 +66,11 @@ services:
       - "5000:5000"
     volumes:
       - ./include/mlflow:/data
+      # - MLFLOW_TRACKING_URI: sqlite:///include/mlflow/mlflow_backend2.db
     networks:
       - astro_airflow
     depends_on:
       - minio
-    restart: always
 
 
 volumes:
