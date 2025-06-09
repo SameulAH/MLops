@@ -11,6 +11,8 @@ services:
         - astro_airflow
       volumes:
         - postgres_data:/var/lib/postgresql/data
+      extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 
   pgadmin:
@@ -26,6 +28,8 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     networks:
       - astro_airflow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     env_file:
       - .env
 
@@ -49,10 +53,13 @@ services:
       - astro_airflow
     env_file:
       - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 
 
   mlflow:
+    container_name: mlflow
     image: ghcr.io/mlflow/mlflow
     # command: >
     #   bash -c "pip install boto3 &&
@@ -71,6 +78,27 @@ services:
       - astro_airflow
     depends_on:
       - minio
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+      
+  scheduler:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - astro_airflow
+
+  webserver:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - astro_airflow
+  triggerer:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - astro_airflow      
 
 
 volumes:

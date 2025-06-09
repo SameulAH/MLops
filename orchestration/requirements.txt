@@ -5,3 +5,9 @@ sqlalchemy
 pyarrow
 psycopg2-binary==2.9.10
 boto3
+
+
+airflow-provider-mlflow
+apache-airflow-providers-amazon
+mlflow-skinny
+astro-sdk-python
