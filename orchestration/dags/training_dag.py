@@ -73,10 +73,8 @@ def mlflow_training_dag():
         retries=1,
         retry_delay=timedelta(minutes=10))
     def train_model_task():
-        for _ in range(2):  # emit something every 60s
-            print("Training in progress...")
-            time.sleep(2)
-            """Call your training function — assumes MLflow logging is done inside it."""
+        for i in range(66):  # emit something every 60s
+            print(f"Training step {i}...")
             run_train()
 
     @task
