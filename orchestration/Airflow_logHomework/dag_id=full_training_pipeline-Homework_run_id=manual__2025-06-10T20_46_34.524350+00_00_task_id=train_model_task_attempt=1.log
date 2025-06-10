@@ -1,0 +1,31 @@
+5f469ec78886
+ INFO - ::group::Log message source details
+*** Found local files:
+***   * /usr/local/airflow/logs/dag_id=full_training_pipeline-Homework/run_id=manual__2025-06-10T20:46:34.524350+00:00/task_id=train_model_task/attempt=1.log
+ INFO - ::endgroup::
+[2025-06-10T20:47:50.244+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-06-10T20:47:50.275+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: full_training_pipeline-Homework.train_model_task manual__2025-06-10T20:46:34.524350+00:00 [queued]>
+[2025-06-10T20:47:50.286+0000] {taskinstance.py:2631} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: full_training_pipeline-Homework.train_model_task manual__2025-06-10T20:46:34.524350+00:00 [queued]>
+[2025-06-10T20:47:50.287+0000] {taskinstance.py:2884} INFO - Starting attempt 1 of 2
+[2025-06-10T20:47:50.305+0000] {taskinstance.py:2907} INFO - Executing <Task(_PythonDecoratedOperator): train_model_task> on 2025-06-10 20:46:34.524350+00:00
+[2025-06-10T20:47:50.328+0000] {logging_mixin.py:190} WARNING - /usr/local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=35054) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-06-10T20:47:50.328+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'full_training_pipeline-Homework', 'train_model_task', 'manual__2025-06-10T20:46:34.524350+00:00', '--job-id', '143', '--raw', '--subdir', 'DAGS_FOLDER/full_pipeline_dag-homework.py', '--cfg-path', '/tmp/tmpo_yjmo52']
+[2025-06-10T20:47:50.329+0000] {standard_task_runner.py:105} INFO - Job 143: Subtask train_model_task
+[2025-06-10T20:47:50.329+0000] {standard_task_runner.py:72} INFO - Started process 35066 to run task
+[2025-06-10T20:47:50.397+0000] {task_command.py:467} INFO - Running <TaskInstance: full_training_pipeline-Homework.train_model_task manual__2025-06-10T20:46:34.524350+00:00 [running]> on host 5f469ec78886
+[2025-06-10T20:47:50.517+0000] {taskinstance.py:3157} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='full_training_pipeline-Homework' AIRFLOW_CTX_TASK_ID='train_model_task' AIRFLOW_CTX_EXECUTION_DATE='2025-06-10T20:46:34.524350+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-10T20:46:34.524350+00:00'
+[2025-06-10T20:47:50.521+0000] {taskinstance.py:740} INFO - ::endgroup::
+[2025-06-10T20:47:51.049+0000] {base.py:84} INFO - Retrieving connection 'minio_s3'
+[2025-06-10T20:47:51.050+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_s3', conn_type='aws') credentials retrieved from login and password.
+[2025-06-10T20:47:52.208+0000] {logging_mixin.py:190} INFO - Training model...
+[2025-06-10T20:49:39.602+0000] {logging_mixin.py:190} WARNING - 2025/06/10 20:49:39 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+[2025-06-10T20:49:39.642+0000] {credentials.py:1213} INFO - Found credentials in environment variables.
+[2025-06-10T20:49:40.416+0000] {logging_mixin.py:190} INFO - Model training complete.
+[2025-06-10T20:49:40.433+0000] {logging_mixin.py:190} INFO - 🏃 View run baseline_traditionallogging at: http://mlflow:5000/#/experiments/8/runs/707691db6b584473b4f86a40708c8c1f
+[2025-06-10T20:49:40.433+0000] {logging_mixin.py:190} INFO - 🧪 View experiment at: http://mlflow:5000/#/experiments/8
+[2025-06-10T20:49:40.590+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-06-10T20:49:40.617+0000] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2025-06-10T20:49:40.617+0000] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=full_training_pipeline-Homework, task_id=train_model_task, run_id=manual__2025-06-10T20:46:34.524350+00:00, execution_date=20250610T204634, start_date=20250610T204750, end_date=20250610T204940
+[2025-06-10T20:49:40.715+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-06-10T20:49:40.743+0000] {taskinstance.py:3924} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-06-10T20:49:40.749+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
