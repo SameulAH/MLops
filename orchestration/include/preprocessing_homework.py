@@ -11,7 +11,7 @@ from include.utils import dump_pickle  # Make sure you create this utility
 import pickle
 
 def read_from_minio(filename: str, folder: str = "raw", aws_conn_id: str = "minio_s3") -> pd.DataFrame:
-    bucket_name = "mlopsdir"
+    bucket_name = "mlopsdirhowework"
     key = f"{folder}/{filename}"
 
     s3_hook = S3Hook(aws_conn_id=aws_conn_id)
@@ -27,19 +27,20 @@ def read_from_minio(filename: str, folder: str = "raw", aws_conn_id: str = "mini
 
 def preprocess_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     df['duration'] = df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']
+    print(f"Initial Number of records loaded: {len(df)}")
     df.duration = df.duration.apply(lambda td: td.total_seconds() / 60)
     df = df[(df.duration >= 1) & (df.duration <= 60)]
 
     categorical = ['PULocationID', 'DOLocationID']
     df[categorical] = df[categorical].astype(str)
+    print(f"Number of after preprocessing: {len(df)}")
 
     return df
 
 
 def featurize(df: pd.DataFrame, dv: DictVectorizer = None, fit: bool = False) -> Tuple:
     categorical = ['PULocationID', 'DOLocationID']
-    numerical = ['trip_distance']
-    dicts = df[categorical + numerical].to_dict(orient='records')
+    dicts = df[categorical].to_dict(orient='records')
     print(f"DataFrame shape after processing: {df.shape}")
 
     if fit:
@@ -52,7 +53,7 @@ def featurize(df: pd.DataFrame, dv: DictVectorizer = None, fit: bool = False) ->
 
 
 def save_pickle_to_minio(obj, filename: str, folder: str = "processed", aws_conn_id: str = "minio_s3"):
-    bucket_name = "mlopsdir"
+    bucket_name = "mlopsdirhowework"
     key = f"{folder}/{filename}"
 
     s3_hook = S3Hook(aws_conn_id=aws_conn_id)
@@ -70,17 +71,17 @@ def run_preprocessing(aws_conn_id: str = "minio_s3", dataset: str = "yellow"):
         f"{dataset}_tripdata_2023-03.parquet"
     ]
 
-    df_train = preprocess_dataframe(read_from_minio(filenames[0], aws_conn_id=aws_conn_id))
-    df_val = preprocess_dataframe(read_from_minio(filenames[1], aws_conn_id=aws_conn_id))
-    df_test = preprocess_dataframe(read_from_minio(filenames[2], aws_conn_id=aws_conn_id))
+    # df_train = preprocess_dataframe(read_from_minio(filenames[0], aws_conn_id=aws_conn_id))
+    # df_val = preprocess_dataframe(read_from_minio(filenames[1], aws_conn_id=aws_conn_id))
+    df_train = preprocess_dataframe(read_from_minio(filenames[2], aws_conn_id=aws_conn_id))
 
-    y_train, y_val, y_test = df_train['duration'].values, df_val['duration'].values, df_test['duration'].values
+    y_train = df_train['duration'].values
 
     X_train, dv = featurize(df_train, fit=True)
-    X_val, _ = featurize(df_val, dv)
-    X_test, _ = featurize(df_test, dv)
+    # X_val, _ = featurize(df_val, dv)
+    # X_test, _ = featurize(df_test, dv)
 
     save_pickle_to_minio(dv, "dv.pkl", aws_conn_id=aws_conn_id)
     save_pickle_to_minio((X_train, y_train), "train.pkl", aws_conn_id=aws_conn_id)
-    save_pickle_to_minio((X_val, y_val), "val.pkl", aws_conn_id=aws_conn_id)
-    save_pickle_to_minio((X_test, y_test), "test.pkl", aws_conn_id=aws_conn_id)
+    # save_pickle_to_minio((X_val, y_val), "val.pkl", aws_conn_id=aws_conn_id)
+    # save_pickle_to_minio((X_test, y_test), "test.pkl", aws_conn_id=aws_conn_id)

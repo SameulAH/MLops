@@ -31,7 +31,7 @@ def process_data(url: str) -> pd.DataFrame:
 
 def upload_to_minio(df: pd.DataFrame, filename: str, folder: str = "raw", aws_conn_id: str = "minio_s3"):
     """Upload DataFrame to MinIO S3-compatible bucket."""
-    bucket_name = "mlopsdir"
+    bucket_name = "mlopsdirhowework"
     key = f"{folder}/{filename}"
 
     ensure_local_dirs(bucket_name, folder)
