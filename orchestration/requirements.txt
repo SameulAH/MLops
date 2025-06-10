@@ -11,4 +11,3 @@ airflow-provider-mlflow
 apache-airflow-providers-amazon
 mlflow-skinny
 astro-sdk-python
-astro-run-dag # This package is needed for the astro run command. It will be removed before a deploy
