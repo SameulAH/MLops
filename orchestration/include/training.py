@@ -70,6 +70,12 @@
 
 
 
+
+
+
+
+
+
 import os
 import pickle
 import mlflow
@@ -85,10 +91,10 @@ import gc  # for manual memory cleanup
 
 # Set MLflow tracking
 mlflow.set_tracking_uri("http://mlflow:5000")
-mlflow.set_experiment("rf_experiment2")
+mlflow.set_experiment("rf_experiment4")
 
 # Only log params and metrics, not full model (save memory)
-mlflow.sklearn.autolog(log_models=False)
+mlflow.sklearn.autolog(log_models=True)
 
 def load_pickle_from_minio(filename: str, aws_conn_id: str = "minio_s3"):
     bucket_name = "mlopsdir"
@@ -134,7 +140,7 @@ def run_train():
         rmse = np.sqrt(mean_squared_error(y_val, y_pred))
         mlflow.log_metric("rmse", rmse)
         print(f"RMSE: {rmse:.2f}")
-
+        mlflow.sklearn.log_model(rf, "models")
         # Explicit cleanup
         del X_train, y_train, X_val, y_val, rf, y_pred
         gc.collect()

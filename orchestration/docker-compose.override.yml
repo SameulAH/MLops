@@ -70,7 +70,8 @@ services:
     command: bash -c '(pip install -q boto3) && (mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////data/mlflow_backend2.db --default-artifact-root s3://mlflowdata)'
     
     ports:
-      - "5000:5000"
+      # - "5000:5000"
+      - "127.0.0.1:5000:5000"
     volumes:
       - ./include/mlflow:/data
       # - MLFLOW_TRACKING_URI: sqlite:///include/mlflow/mlflow_backend2.db

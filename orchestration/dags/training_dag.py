@@ -18,9 +18,9 @@ from include.training import run_train  # your model training script
 # Constants
 MLFLOW_CONN_ID = "mlflowconn"
 MINIO_CONN_ID = "minio_s3"
-EXPERIMENT_NAME = "rf_experiment2"
+EXPERIMENT_NAME = "rf_experiment3"
 ARTIFACT_BUCKET = "mlflowdata"
-REGISTERED_MODEL_NAME = "my_model"
+REGISTERED_MODEL_NAME = "RF-Model"
 max_results=100
 
 default_args = {
@@ -69,13 +69,11 @@ def mlflow_training_dag():
         ).json()
 
         return response["experiment_id"]
-    @task(execution_timeout=timedelta(minutes=10),  # Cap training runtime
+    @task(execution_timeout=timedelta(minutes=30),  # Cap training runtime
         retries=1,
         retry_delay=timedelta(minutes=10))
     def train_model_task():
-        for i in range(66):  # emit something every 60s
-            print(f"Training step {i}...")
-            run_train()
+        run_train()
 
     @task
     def register_model():
