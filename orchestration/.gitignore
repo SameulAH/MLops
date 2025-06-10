@@ -12,4 +12,8 @@ airflow.db
 ingest_drymode.py
 set-env.ps1
 packages.txt
+<<<<<<< HEAD
 venv/
+=======
+venv
+>>>>>>> de6b9ee98b991f61324871c1056e2705f9b300ee
