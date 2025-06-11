@@ -2,7 +2,8 @@
 
 ## 📌 Overview
 
-This project implements a complete **MLOps pipeline** leveraging open-source tools to streamline data ingestion, model training, tracking, and deployment:
+This project implements a complete **MLOps pipeline** leveraging open-source tools to streamline data ingestion, model training, tracking, and deployment...
+
 
 - **Apache Airflow** for workflow orchestration  
 - **MinIO** for data and artifact storage  
@@ -13,6 +14,9 @@ This project implements a complete **MLOps pipeline** leveraging open-source too
 - **Model API** for serving predictions  (in pogress)
 
 The project uses **NYC Yellow Taxi trip data** as the dataset source.
+
+
+![MLOps Pipeline Diagram](orchestration\src\training_pipelinefinal.png)
 
 ---
 
