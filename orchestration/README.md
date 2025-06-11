@@ -46,9 +46,8 @@ The MLOps pipeline follows this flow:
    - Trained model and metadata are stored in **MinIO** via MLflow.
    - Model metrics are logged to **PostgreSQL**.
 
-5. **Model Deployment**
+5. **Model Deployment** -- in progress
    - Best model is deployed through a RESTful **Model API**.
-   - A back-end API consumes predictions in real-time or batch.
 
 ---
 
