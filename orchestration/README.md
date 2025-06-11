@@ -11,7 +11,7 @@ This project implements a complete **MLOps pipeline** leveraging open-source too
 - **Random Forest** for machine learning  
 - **PostgreSQL** for metrics storage  
 - **Docker** to containerize services  
-- **Model API** for serving predictions  (in pogress)
+- **Model API** for serving predictions  (in progress)
 
 The project uses **NYC Yellow Taxi trip data** as the dataset source.
 
