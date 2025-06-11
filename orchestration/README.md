@@ -16,7 +16,12 @@ This project implements a complete **MLOps pipeline** leveraging open-source too
 The project uses **NYC Yellow Taxi trip data** as the dataset source.
 
 
-![MLOps Pipeline Diagram](./src/training_pipelinefinal.png)
+## Full Architecture
+<p align="center">
+  <img src="./src/training_pipelinefinal.png" alt="MLOps Pipeline Diagram" width="600"/>
+</p>
+
+
 
 ---
 
