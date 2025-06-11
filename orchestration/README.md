@@ -18,9 +18,8 @@ The project uses **NYC Yellow Taxi trip data** as the dataset source.
 
 ## Full Architecture
 <p align="center">
-  <img src="./src/training_pipelinefinal.png" alt="MLOps Pipeline Diagram" width="600"/>
+  <img src="./src/training_pipelinefinal.png" alt="MLOps Pipeline Diagram" />
 </p>
-
 
 
 ---
