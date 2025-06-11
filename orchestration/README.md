@@ -1,6 +1,6 @@
-# 🧠 MLOps Pipeline with MLflow, Apache Airflow, MinIO & Docker
+#  MLOps Pipeline with MLflow, Apache Airflow, MinIO & Docker
 
-## 📌 Overview
+##  Overview
 
 This project implements a complete **MLOps pipeline** leveraging open-source tools to streamline data ingestion, model training, tracking, and deployment...
 
@@ -16,18 +16,18 @@ This project implements a complete **MLOps pipeline** leveraging open-source too
 The project uses **NYC Yellow Taxi trip data** as the dataset source.
 
 
-![MLOps Pipeline Diagram](orchestration\src\training_pipelinefinal.png)
+![MLOps Pipeline Diagram](./src/training_pipelinefinal.png)
 
 ---
 
-## 🗂️ Dataset
+##  Dataset
 
 We use the **NYC Yellow Taxi trip records** provided by [NYC.gov Open Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page):
 - **Ingestion**: The raw dataset is downloaded and uploaded into **MinIO** (S3-compatible object store) using an Airflow task.
 
 ---
 
-## 🔧 Architecture Overview
+##  Architecture Overview
 
 The MLOps pipeline follows this flow:
 
@@ -52,7 +52,7 @@ The MLOps pipeline follows this flow:
 
 ---
 
-## 🐳 Tech Stack
+##  Tech Stack
 
 | Component         | Tool                     |
 |-------------------|--------------------------|
