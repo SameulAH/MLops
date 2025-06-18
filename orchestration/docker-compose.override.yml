@@ -75,6 +75,7 @@ services:
     volumes:
       - ./include/mlflow:/data
       # - MLFLOW_TRACKING_URI: sqlite:///include/mlflow/mlflow_backend2.db
+      # - ./include/mlflow/mlflow_backend2.db:/data/mlflow_backend2.db
     networks:
       - astro_airflow
     depends_on:
