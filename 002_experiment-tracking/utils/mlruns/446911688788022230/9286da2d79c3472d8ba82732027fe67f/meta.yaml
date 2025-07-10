@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sam/Documents/GitHub/MLops/experiment-tracking/utils/mlruns/446911688788022230/9286da2d79c3472d8ba82732027fe67f/artifacts
+end_time: 1748443102247
+entry_point_name: ''
+experiment_id: '446911688788022230'
+lifecycle_stage: active
+run_id: 9286da2d79c3472d8ba82732027fe67f
+run_name: rumbling-shad-941
+run_uuid: 9286da2d79c3472d8ba82732027fe67f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748443048488
+status: 3
+tags: []
+user_id: sam

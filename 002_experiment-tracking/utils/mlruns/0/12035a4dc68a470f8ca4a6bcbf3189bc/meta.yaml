@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sam/Documents/GitHub/MLops/experiment-tracking/utils/mlruns/0/12035a4dc68a470f8ca4a6bcbf3189bc/artifacts
+end_time: 1748135775736
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 12035a4dc68a470f8ca4a6bcbf3189bc
+run_name: resilient-snipe-778
+run_uuid: 12035a4dc68a470f8ca4a6bcbf3189bc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748135708974
+status: 4
+tags: []
+user_id: sam

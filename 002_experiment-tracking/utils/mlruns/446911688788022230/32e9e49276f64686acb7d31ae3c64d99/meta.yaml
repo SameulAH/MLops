@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sam/Documents/GitHub/MLops/experiment-tracking/utils/mlruns/446911688788022230/32e9e49276f64686acb7d31ae3c64d99/artifacts
+end_time: 1748443102266
+entry_point_name: ''
+experiment_id: '446911688788022230'
+lifecycle_stage: active
+run_id: 32e9e49276f64686acb7d31ae3c64d99
+run_name: righteous-rat-481
+run_uuid: 32e9e49276f64686acb7d31ae3c64d99
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748443048005
+status: 3
+tags: []
+user_id: sam

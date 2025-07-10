@@ -1,0 +1,23 @@
+.git
+.env
+.DS_Store
+airflow_settings.yaml
+__pycache__/
+astro
+.venv
+airflow-webserver.pid
+webserver_config.py
+airflow.cfg
+airflow.db
+ingest_drymode.py
+set-env.ps1
+packages.txt
+<<<<<<< HEAD
+<<<<<<< HEAD
+venv/
+=======
+venv
+>>>>>>> de6b9ee98b991f61324871c1056e2705f9b300ee
+=======
+venv/
+>>>>>>> 957d1191f1e44f3e8cbad421f0c4730ec70a0e85

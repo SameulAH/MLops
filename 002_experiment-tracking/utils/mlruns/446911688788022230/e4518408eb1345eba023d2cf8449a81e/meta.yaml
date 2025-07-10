@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sam/Documents/GitHub/MLops/experiment-tracking/utils/mlruns/446911688788022230/e4518408eb1345eba023d2cf8449a81e/artifacts
+end_time: 1748443027010
+entry_point_name: ''
+experiment_id: '446911688788022230'
+lifecycle_stage: active
+run_id: e4518408eb1345eba023d2cf8449a81e
+run_name: awesome-donkey-316
+run_uuid: e4518408eb1345eba023d2cf8449a81e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748443026173
+status: 3
+tags: []
+user_id: sam
